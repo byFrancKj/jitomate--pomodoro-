@@ -1,0 +1,21 @@
+{
+  "name": "jitomate--pomodoro-",
+  "displayName": "jitomate (pomodoro)",
+  "description": "Pomodoro + control Spotify en macOS con ciclos, progress bar, estado dinámico y marquee",
+  "version": "0.0.1",
+  "engines": { "vscode": "^1.102.0" },
+  "categories": ["Other"],
+  "activationEvents": ["*"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "jitomate--pomodoro-.toggleSpotify",   "title": "Toggle Play/Pause Spotify" },
+      { "command": "jitomate--pomodoro-.nextTrack",       "title": "Next Spotify Track" },
+      { "command": "jitomate--pomodoro-.prevTrack",       "title": "Previous Spotify Track" },
+      { "command": "jitomate--pomodoro-.volumeDown",      "title": "Spotify Volume Down" },
+      { "command": "jitomate--pomodoro-.volumeUp",        "title": "Spotify Volume Up" },
+      { "command": "jitomate--pomodoro-.toggleMute",      "title": "Spotify Mute/Unmute" },
+      { "command": "jitomate--pomodoro-.toggleSession",   "title": "Start/Stop Pomodoro Session" }
+    ]
+  }
+}
