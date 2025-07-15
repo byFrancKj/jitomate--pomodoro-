@@ -18,9 +18,6 @@ Dynamic icon: shows ▶️ or ⏸️ based on actual playback state
 
 Marquee display: scrolls current “Artist – Track” title every 30 s
 
-![Pomodoro Status](images/pomodoro-status.png)
-![Spotify Controls](images/spotify-controls.png)
-
 Requirements
 
 macOS (AppleScript required)
