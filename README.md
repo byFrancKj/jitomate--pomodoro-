@@ -1,65 +1,73 @@
-# jitomate--pomodoro- README
+Features
 
-This is the README for your extension "jitomate--pomodoro-". After writing up a brief description, we recommend including the following sections.
+⏱ Pomodoro Work/Break Cycles
 
-## Features
+Automatic transition: 25m work → 5m short break → every 4th cycle a 15m long break
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+🔴 Work, 🟢 Short Break, 🔵 Long Break
 
-For example if there is an image subfolder under your extension project workspace:
+🎛 Progress Bar in status bar: visual 10-block indicator showing session progress
 
-\!\[feature X\]\(images/feature-x.png\)
+🎵 Spotify Controls
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Play/Pause, Next/Previous Track
 
-## Requirements
+Volume Up/Down, Mute/Unmute (restores previous volume)
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Dynamic icon: shows ▶️ or ⏸️ based on actual playback state
 
-## Extension Settings
+Marquee display: scrolls current “Artist – Track” title every 30 s
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+![Pomodoro Status](images/pomodoro-status.png)
+![Spotify Controls](images/spotify-controls.png)
 
-For example:
+Requirements
 
-This extension contributes the following settings:
+macOS (AppleScript required)
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+Spotify desktop app installed and running
 
-## Known Issues
+VS Code v1.60.0 or higher
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Extension Settings
 
-## Release Notes
+This version does not expose any user-configurable settings. Future releases will allow customizing:
 
-Users appreciate release notes as you update your extension.
+jitomate.workDuration
 
-### 1.0.0
+jitomate.shortBreakDuration
 
-Initial release of ...
+jitomate.longBreakDuration
 
-### 1.0.1
+jitomate.progressBlocks
 
-Fixed issue #.
+Known Issues
 
-### 1.1.0
+❗️ AppleScript-based controls only supported on macOS
 
-Added features X, Y, and Z.
+❗️ If Spotify is closed or unresponsive, controls may fail silently
 
----
+⚙️ Marquee animation consumes a small amount of CPU due to intervals
 
-## Working with Markdown
+Release Notes
 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+1.0.0
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
+Initial release with:
 
-## For more information
+Pomodoro timer with automatic breaks and progress visualization
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+Basic Spotify controls (play/pause, next/prev, volume up/down, mute toggle)
 
-**Enjoy!**
+Dynamic playback indicator and scrolling track title display
+
+
+For more information
+
+VS Code Markdown Support
+
+VS Code API - StatusBarItem
+
+Spotify AppleScript API
+
+Enjoy using jitomate--pomodoro- and boost your productivity!
