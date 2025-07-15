@@ -10,8 +10,8 @@
   "contributes": {
     "commands": [
       { "command": "jitomate--pomodoro-.toggleSpotify",   "title": "Toggle Play/Pause Spotify" },
-      { "command": "jitomate--pomodoro-.nextTrack",       "title": "Next Spotify Track" },
       { "command": "jitomate--pomodoro-.prevTrack",       "title": "Previous Spotify Track" },
+      { "command": "jitomate--pomodoro-.nextTrack",       "title": "Next Spotify Track" },
       { "command": "jitomate--pomodoro-.volumeDown",      "title": "Spotify Volume Down" },
       { "command": "jitomate--pomodoro-.volumeUp",        "title": "Spotify Volume Up" },
       { "command": "jitomate--pomodoro-.toggleMute",      "title": "Spotify Mute/Unmute" },

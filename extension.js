@@ -26,25 +26,25 @@ function activate(context) {
   console.log('🔌 Activando jitomate--pomodoro-');
 
   // ▶️ Play/Pause Spotify con estado dinámico
-  spotifyButton = create('🎵 ▶️','toggleSpotify','Play/Pause Spotify','#1DB954',100);
+  spotifyButton = create('🎵 ▶️','toggleSpotify','Play/Pause Spotify','#c8ddefff',100);
   context.subscriptions.push(
     spotifyButton,
     register('toggleSpotify', () => exec(`osascript -e 'tell application "Spotify" to playpause'`))
   );
   updatePlaybackState();
-  playbackStateInterval = setInterval(updatePlaybackState, 5000);
+  playbackStateInterval = setInterval(updatePlaybackState, 2000);
   context.subscriptions.push({ dispose:()=>clearInterval(playbackStateInterval) });
-
-  // ⏭️ Next Track
-  context.subscriptions.push(
-    create('⏭️','nextTrack','Next Spotify Track','#FFFFFF',99),
-    register('nextTrack',   ()=>exec(`osascript -e 'tell application "Spotify" to next track'`))
-  );
 
   // ⏮️ Previous Track
   context.subscriptions.push(
-    create('⏮️','prevTrack','Previous Spotify Track','#FFFFFF',98),
+    create('⏮️ Previus','prevTrack','Previous Spotify Track','#c8ddefff',99),
     register('prevTrack',   ()=>exec(`osascript -e 'tell application "Spotify" to previous track'`))
+  );
+
+  // ⏭️ Next Track
+  context.subscriptions.push(
+    create('⏭️ Next','nextTrack','Next Spotify Track','#c8ddefff',98),
+    register('nextTrack',   ()=>exec(`osascript -e 'tell application "Spotify" to next track'`))
   );
 
   // 🔉 Volume Down
@@ -55,7 +55,7 @@ function activate(context) {
 
   // 🔊 Volume Up
   context.subscriptions.push(
-    create('🔊 +','volumeUp','Spotify Volume Up','#FFAA00',96),
+    create('🔊 +','volumeUp','Spotify Volume Up','#40ff00ff',96),
     register('volumeUp',    ()=>exec(`osascript -e 'tell application "Spotify" to set sound volume to (sound volume + 10)'`))
   );
 
@@ -159,8 +159,8 @@ function updateSession(){
   const m=String(Math.floor(sessionRemaining/60)).padStart(2,'0');
   const s=String(sessionRemaining%60).padStart(2,'0');
   pomodoroButton.text=`⏱ ${label} ${bar} ${m}:${s}`;
-  pomodoroButton.color = sessionState==='work'? '#FF0000' 
-                      : sessionState==='shortBreak'? '#00AA00'
+  pomodoroButton.color = sessionState==='work'? '#00ff1aff' 
+                      : sessionState==='shortBreak'? '#e32e16ff'
                       : '#0066CC';
 }
 
@@ -170,7 +170,7 @@ function updatePlaybackState(){
     const st=out?.trim();
     if(st && st!==lastSpotifyState){
       lastSpotifyState=st;
-      spotifyButton.text= st==='playing'?'🎵 ⏸️':'🎵 ▶️';
+      spotifyButton.text= st==='playing'?'🎵 ⏸️ Pause':'🎵 ▶️ Play';
     }
   });
 }
@@ -192,7 +192,7 @@ function updateTrackAndStartMarquee(){
       },300);
     }
   );
-  setTimeout(updateTrackAndStartMarquee,30000);
+  setTimeout(updateTrackAndStartMarquee,10000);
 }
 
 function deactivate(){
