@@ -1,6 +1,15 @@
 const vscode = require('vscode');
 const { exec } = require('child_process');
 
+// Color constants
+const COLOR_SPOTIFY = '#c8ddefff';
+const COLOR_VOLUME_DOWN = '#FFAA00';
+const COLOR_VOLUME_UP = '#40ff00ff';
+const COLOR_MUTE = '#FF0000';
+const COLOR_WORK = '#00ff1aff';
+const COLOR_SHORT_BREAK = '#e32e16ff';
+const COLOR_LONG_BREAK = '#0066CC';
+
 let sessionInterval;
 let sessionRemaining;
 let sessionState = 'work';      // 'work' | 'shortBreak' | 'longBreak'
@@ -26,7 +35,7 @@ function activate(context) {
   console.log('🔌 Activando jitomate--pomodoro-');
 
   // ▶️ Play/Pause Spotify con estado dinámico
-  spotifyButton = create('🎵 ▶️','toggleSpotify','Play/Pause Spotify','#c8ddefff',100);
+  spotifyButton = create('🎵 ▶️','toggleSpotify','Play/Pause Spotify',COLOR_SPOTIFY,100);
   context.subscriptions.push(
     spotifyButton,
     register('toggleSpotify', () => exec(`osascript -e 'tell application "Spotify" to playpause'`))
@@ -37,31 +46,31 @@ function activate(context) {
 
   // ⏮️ Previous Track
   context.subscriptions.push(
-    create('⏮️ Previus','prevTrack','Previous Spotify Track','#c8ddefff',99),
+    create('⏮️ Previus','prevTrack','Previous Spotify Track',COLOR_SPOTIFY,99),
     register('prevTrack',   ()=>exec(`osascript -e 'tell application "Spotify" to previous track'`))
   );
 
   // ⏭️ Next Track
   context.subscriptions.push(
-    create('⏭️ Next','nextTrack','Next Spotify Track','#c8ddefff',98),
+    create('⏭️ Next','nextTrack','Next Spotify Track',COLOR_SPOTIFY,98),
     register('nextTrack',   ()=>exec(`osascript -e 'tell application "Spotify" to next track'`))
   );
 
   // 🔉 Volume Down
   context.subscriptions.push(
-    create('🔉 –','volumeDown','Spotify Volume Down','#FFAA00',97),
+    create('🔉 –','volumeDown','Spotify Volume Down',COLOR_VOLUME_DOWN,97),
     register('volumeDown',  ()=>exec(`osascript -e 'tell application "Spotify" to set sound volume to (sound volume - 10)'`))
   );
 
   // 🔊 Volume Up
   context.subscriptions.push(
-    create('🔊 +','volumeUp','Spotify Volume Up','#40ff00ff',96),
+    create('🔊 +','volumeUp','Spotify Volume Up',COLOR_VOLUME_UP,96),
     register('volumeUp',    ()=>exec(`osascript -e 'tell application "Spotify" to set sound volume to (sound volume + 10)'`))
   );
 
   // 🔇 Toggle Mute
   context.subscriptions.push(
-    create('🔇','toggleMute','Spotify Mute/Unmute','#FF0000',95),
+    create('🔇','toggleMute','Spotify Mute/Unmute',COLOR_MUTE,95),
     register('toggleMute',()=>{
       if(!isMuted){
         exec(`osascript -e 'tell application "Spotify" to sound volume as integer'`,(_e,out)=>{
@@ -159,9 +168,9 @@ function updateSession(){
   const m=String(Math.floor(sessionRemaining/60)).padStart(2,'0');
   const s=String(sessionRemaining%60).padStart(2,'0');
   pomodoroButton.text=`⏱ ${label} ${bar} ${m}:${s}`;
-  pomodoroButton.color = sessionState==='work'? '#00ff1aff' 
-                      : sessionState==='shortBreak'? '#e32e16ff'
-                      : '#0066CC';
+  pomodoroButton.color = sessionState==='work'? COLOR_WORK
+                      : sessionState==='shortBreak'? COLOR_SHORT_BREAK
+                      : COLOR_LONG_BREAK;
 }
 
 /** Actualiza ▶️/⏸️ según estado real */

@@ -1,21 +1,50 @@
 {
   "name": "jitomate--pomodoro-",
   "displayName": "jitomate (pomodoro)",
+  "publisher": "byFrancKj",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/byFrancKj/jitomate--pomodoro-.git"
+  },
   "description": "Pomodoro + control Spotify en macOS con ciclos, progress bar, estado dinámico y marquee",
   "version": "0.0.1",
-  "engines": { "vscode": "^1.102.0" },
-  "categories": ["Other"],
-  "activationEvents": ["*"],
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:jitomate--pomodoro-.toggleSpotify",
+    "onCommand:jitomate--pomodoro-.prevTrack",
+    "onCommand:jitomate--pomodoro-.nextTrack",
+    "onCommand:jitomate--pomodoro-.volumeDown",
+    "onCommand:jitomate--pomodoro-.volumeUp",
+    "onCommand:jitomate--pomodoro-.toggleMute",
+    "onCommand:jitomate--pomodoro-.toggleSession"
+  ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
-      { "command": "jitomate--pomodoro-.toggleSpotify",   "title": "Toggle Play/Pause Spotify" },
-      { "command": "jitomate--pomodoro-.prevTrack",       "title": "Previous Spotify Track" },
-      { "command": "jitomate--pomodoro-.nextTrack",       "title": "Next Spotify Track" },
-      { "command": "jitomate--pomodoro-.volumeDown",      "title": "Spotify Volume Down" },
-      { "command": "jitomate--pomodoro-.volumeUp",        "title": "Spotify Volume Up" },
-      { "command": "jitomate--pomodoro-.toggleMute",      "title": "Spotify Mute/Unmute" },
-      { "command": "jitomate--pomodoro-.toggleSession",   "title": "Start/Stop Pomodoro Session" }
+      { "command": "jitomate--pomodoro-.toggleSpotify", "title": "Toggle Play/Pause Spotify" },
+      { "command": "jitomate--pomodoro-.prevTrack",     "title": "Previous Spotify Track" },
+      { "command": "jitomate--pomodoro-.nextTrack",     "title": "Next Spotify Track" },
+      { "command": "jitomate--pomodoro-.volumeDown",    "title": "Spotify Volume Down" },
+      { "command": "jitomate--pomodoro-.volumeUp",      "title": "Spotify Volume Up" },
+      { "command": "jitomate--pomodoro-.toggleMute",    "title": "Spotify Mute/Unmute" },
+      { "command": "jitomate--pomodoro-.toggleSession", "title": "Start/Stop Pomodoro Session" }
     ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.102.0",
+    "@types/node": "20.x",
+    "eslint": "^9.25.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
   }
 }
